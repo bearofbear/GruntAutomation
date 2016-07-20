@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片轮播</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+        *{font-family: "微软雅黑";}
+        .box{
+            margin: 0 auto;
+            width: 900px;
+            height: 600px;
+            position: relative;
+           overflow: hidden;
+            box-shadow: #999 5px 5px 5px;
+        }
+        #imgs{
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 3600px;
+            height: 600px;
+            list-style: none;
+            z-index: 10;
+        }
+        #imgs li{
+            margin: 0;
+            padding: 0;
+            width: 900px;
+            height: 600px;
+            float: left;
+        }
+        #imgs li img{
+            width: 900px;
+            height: 600px;
+        }
+        #index{
+            position: absolute;
+            left: 350px;
+            bottom: 10px;
+            z-index: 20;
+            list-style: none;
+        }
+        #index li{
+            float: left;
+            background-color: #868686;
+            padding: 10px;
+            width: 10px;
+            height: 10px;
+            line-height: 10px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            margin: 0 10px 0 0;
+        }
+        #index li:hover{
+            cursor: pointer;//设置鼠标为手形
+        }
+        #left{
+            width: 35px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 280px;
+            background-color: rgba(255,255,255,0.2);
+            z-index: 30;
+            color: white;
+        }
+
+        #right{
+            width: 35px;
+            height: 100px;
+            position: absolute;
+            right: 0;
+            top: 280px;
+            background-color: rgba(255,255,255,0.2);
+            z-index: 30;
+            color: white;
+        }
+
+    </style>
+    <script>
+           window.onload = function () {
+               flag = 0;
+               obj1 = document.getElementById("imgs");
+               var temp = document.getElementById("index");
+               obj2 = temp.getElementsByTagName("li");
+                //将移动和索引数字相对应起来
+               for (var num = 0; num < obj2.length; num++) {
+                   obj2[num].onmouseover = function () {//鼠标移动到index位置上的时候，执行滑动操作
+                       flag = this.innerHTML - 1; //index值比数组下标值大1
+                       obj1.style.left = flag * (-900) + "px"; //滑动，即改变左边距值
+                       for (var j = 0; j < obj2.length; j++) {//设置索引的背景颜色
+                           obj2[j].style.backgroundColor = "#868686";
+                       }
+                       obj2[flag].style.backgroundColor = "#f00";//给被选中的图片索引单独设置背景色
+                   }
+               }
+
+               obj3 = document.getElementById("left");
+               obj4 = document.getElementById("right");
+               obj3.onclick = function(){//左按钮，获取前一张图片
+                   if(flag == 0) //如果已经移动到最前面一张，则前一张为末尾的那一张图
+                       flag = obj2.length;
+                   flag-=1; //需要减少左边距，所以flag减1
+                   obj1.style.left = flag * (-900) + "px";
+                   for (var j = 0; j < obj2.length; j++) {//设置索引的背景颜色
+                       obj2[j].style.backgroundColor = "#868686";
+                   }
+                   obj2[flag].style.backgroundColor = "#f00";//给被选中的图片索引单独设置背景色
+               }
+
+               obj4.onclick = function(){//右按钮，获取后面一张图片
+                    if(flag == obj2.length-1)//如果到了最右边，则下一张图为第一张
+                       flag =-1;
+                   flag+=1; //增加左边距，flag值加1
+                   obj1.style.left = flag* (-900) + "px";
+                   for (var j = 0; j < obj2.length; j++) {
+                       obj2[j].style.backgroundColor = "#868686";//设置索引的背景颜色
+                   }
+                   obj2[flag].style.backgroundColor = "#f00";
+                   
+               }
+           }
+
+    </script>
+</head>
+<body>
+<div class="box">
+    <uL id="imgs">
+        <li><img src="http://5.26923.com/download/pic/000/319/c7efe6c0e6bffe969d51bfc68bf5cd8e.png"> </li>
+        <li><img src="http://a0.att.hudong.com/82/72/20300533992310135753720410250.jpg"></li>
+        <li><img src="http://files.vivo.com.cn/bbs_upfiles/data/attachment/forum/201203/31/170318syoh4mumekxusbux.jpg"></li>
+        <li><img src="http://a3.att.hudong.com/35/30/300000764046131856301696516_950.jpg"></li>
+    </uL>
+    <div id="left"><br><br><span>《</span></div>
+    <div id="right"><br><br><span>&nbsp;&nbsp;&nbsp;》</span></div>
+    <ul id="index">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css动画1</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../src/style/common.css"> -->
+	<style type="text/css">
+		
+		.demo,.img,.mark,.border{
+			width: 300px;
+			height: 300px;
+		}
+		.demo{
+			position: relative;
+			margin: 50px auto;
+			display: block;
+		}
+		.img{
+			background-repeat: no-repeat;
+			-webkit-background-size: cover;
+			background-size: cover;
+			background-position: center;
+			border-radius: 50%
+		}
+		.mark{
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-radius: 50%;
+			color: rgba(255,255,255,0);
+			transition: all .5s ease-in
+		}
+		.info{
+			position: absolute;
+			top: 50%;
+			left: 0;
+			-webkit-transform:translateY(-50%);
+			width: 100%;
+			text-align: center;
+		}
+		.border{
+			border: 10px solid #072256;
+			border-radius: 50%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			box-sizing: border-box;
+			border-left-color: #E46F26;
+			border-top-color: #E46F26;
+			transition: all .5s ease-in
+		}
+		.demo:hover .mark{
+			background-color:rgba(0,0,0,0.5);
+			color: rgba(255,255,255,1);
+		}
+		.demo:hover .border{
+			transform: rotate(180deg);
+		}
+
+	</style>
+</head>
+<body>
+	<a href="javascript:;" class="demo">
+		<div class="img" style="background-image:url(http://ww3.sinaimg.cn/mw690/9c7cd2cdjw1e60hntjcq2j211y0lcq5e.jpg)"></div>
+		<div class="mark">
+			<div class="info">
+				<h3>Nice Picture</h3>
+				<p>Auto Chenyutian</p>
+			</div>
+		</div>
+		<div class="border"></div>
+	</a>
+
+
+	<style type="text/css">
+		.box{
+			width: 200px;
+			height: 200px;
+			position: relative;
+			margin: 50px auto
+		}
+		.spinner-container{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		
+		.container1 >div,.container2>div{
+			position: absolute;
+			background-color: #333;
+			width: 25px;
+			height: 25px;
+			border-radius: 100%;
+			-webkit-animation: loading 1.2s infinite ease-in-out;
+		  	animation: loading 1.2s infinite ease-in-out;
+		  	-webkit-animation-fill-mode: both;
+		  	animation-fill-mode: both;
+		}
+
+		.circle1{
+			top: 0;
+			left: 0;
+		}
+		.circle2{
+			top: 0;
+			right: 0;
+		}
+		.circle3{
+			bottom: 0;
+			left: 0;
+
+		}
+		.circle4{
+			bottom: 0;
+			right: 0;
+		}
+
+		.container2{
+			-webkit-transform:rotate(45deg);
+			transform: rotate(45deg);
+		}
+
+		.container2 .circles1{
+			animation-delay: -1.1
+		}
+		.container1 .circle2 {
+		  -webkit-animation-delay: -0.9s;
+		  animation-delay: -0.9s;
+		}
+		.container2 .circle2 {
+		  -webkit-animation-delay: -0.8s;
+		  animation-delay: -0.8s;
+		}
+		.container1 .circle3 {
+		  -webkit-animation-delay: -0.7s;
+		  animation-delay: -0.7s;
+		}
+		.container2 .circle3 {
+		  -webkit-animation-delay: -0.6s;
+		  animation-delay: -0.6s;
+		}
+		.container1 .circle4 {
+		  -webkit-animation-delay: -0.5s;
+		  animation-delay: -0.5s;
+		}
+		.container2 .circle4 {
+		  -webkit-animation-delay: -0.4s;
+		  animation-delay: -0.4s;
+		}
+		@-webkit-keyframes loading{
+
+			0%,80%,100%{
+				transform: scale(0.0);
+				-webkit-transform:scale(0.0);
+			}40%{
+				transform: scale(1.0);
+				-webkit-transform:scale(1.0);
+			}
+		}
+		@keyframes loading{
+			0%,80%,100%{
+				transform: scale(0.0);
+				-webkit-transform:scale(0.0);
+			}40%{
+				transform: scale(1.0);
+				-webkit-transform:scale(1.0);
+			}
+		}
+	</style>
+	<div class="box">
+		<div class="spinner-container container1">
+			<div class="circle1"></div>
+			<div class="circle2"></div>
+			<div class="circle3"></div>
+			<div class="circle4"></div>
+		</div>
+		<div class="spinner-container container2">
+			<div class="circle1"></div>
+			<div class="circle2"></div>
+			<div class="circle3"></div>
+			<div class="circle4"></div>
+		</div>
+	</div>
+</body>
+</html>

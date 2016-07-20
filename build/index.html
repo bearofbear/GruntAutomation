@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+    .box{
+      position: absolute;
+      left: -300px;
+      top: 100px;
+      width: 400px;
+      height: 200px;
+      background-color: #3176de;
+    }
+  </style>
+</head>
+<body>
+  <div id="boxmain" class="box">
+
+  </div>
+
+  <script>
+    window.onload = function(){
+        var timer = null;
+        var box = document.getElementById('boxmain');
+        //鼠标划过
+        box.onmouseover = function(){
+            onMove(10,0);
+        };
+        function onMove(speed,iTaget){
+              clearInterval(timer);
+              timer = setInterval(function(){
+                if(box.offsetLeft == iTaget){
+                  clearInterval(timer)
+                }else {
+                  box.style.left = box.offsetLeft +speed +'px';
+                  console.log(box.offsetLeft);
+                }
+
+              },30)
+
+        };
+
+        // 鼠标离开
+
+        box.onmouseout = function(){
+          onMout(-10,-300)
+        }
+
+        function onMout(speed,iTaget){
+          clearInterval(timer);
+          timer = setInterval(function(){
+            if(box.offsetLeft == iTaget){
+              clearInterval(timer)
+            }else {
+              box.style.left = box.offsetLeft + speed +'px';
+            }
+          },30)
+        }
+
+
+    }
+  </script>
+</body>
+</html>
