@@ -17,3 +17,16 @@ Grunt和所有grunt插件都是基于nodejs来运行的，如果你的电脑上�
 安装了nodejs之后，可以在你的控制台中输入“node -v”来查看nodejs的版本，也顺便试验nodejs是否安装成功。
 
 ![anzhuang](http://images0.cnblogs.com/blog2015/138012/201506/082101533637233.png)
+
+注意两点。第一，grunt依赖于nodejs的v0.8.0及以上版本；第二，奇数版本号的版本被认为是不稳定的开发版，不过从官网上下载下来的应该都是偶数的稳定版。
+
+
+#安装grunt-CLI
+　　注意，如果你的电脑不联网，以下操作你都做不了，所以，首先保证电脑联网。　“CLI”被翻译为“命令行”。要想使用grunt，首先必须将grunt-cli安装到全局环境中，使用nodejs的“npm install…”进行安装。如果你不了解nodejs的npm如何安装软件，这里就先不要问了，先照着我说的做。
+
+　　打开控制台（注意：windows系统下请使用管理员权限打开），
+　　输入：
+　　
+　　![anzhuang](http://images0.cnblogs.com/blog2015/138012/201506/082103222856299.png)
+
+　　
